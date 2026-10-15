@@ -1,1184 +1,138 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#ee4d2d">
-
-<title>Shopline Premium | Achadinhos Shopee</title>
-<meta name="description" content="SHOPLINE PREMIUM: encontre achadinhos, ofertas e produtos da Shopee. Pesquise e descubra produtos selecionados.">
-<meta name="robots" content="index,follow">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<title>SHOPLINE PREMIUM | Achadinhos</title>
+<meta name="description" content="Descubra achadinhos da Shopline Premium.">
 
 <style>
-:root {
-  --orange: #ee4d2d;
-  --orange-dark: #d94325;
-  --orange-light: #fff0eb;
-  --ink: #222;
-  --muted: #757575;
-  --bg: #f5f5f5;
-  --card: #fff;
-  --line: #e8e8e8;
-  --display: "Bricolage Grotesque", Arial, sans-serif;
-  --body: "DM Sans", Arial, sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--body);
-  line-height: 1.5;
-}
-
-button, input, select {
-  font: inherit;
-}
-
-button, a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-button {
-  cursor: pointer;
-}
-
-:is(input, select, button, a):focus-visible {
-  outline: 3px solid #ffb49f;
-  outline-offset: 2px;
-}
-
-/* CABEÇALHO */
-
-header {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 30px 20px 24px;
-}
-
-h1 {
-  margin: 0 0 12px;
-  color: var(--orange);
-  font-family: var(--display);
-  font-size: clamp(2rem, 7vw, 3.7rem);
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -1.5px;
-}
-
-h1 span {
-  display: inline-block;
-  padding: 2px 9px;
-  background: var(--orange);
-  color: #fff;
-  border-radius: 5px;
-}
-
-header p {
-  max-width: 600px;
-  margin: 0;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* BUSCA E ORDENAÇÃO */
-
-.controls {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--orange);
-  box-shadow: 0 3px 12px #00000012;
-}
-
-.controls form {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  flex-wrap: wrap;
-}
-
-input[type="search"] {
-  flex: 1 1 230px;
-  min-width: 0;
-  padding: 13px 15px;
-  border: 2px solid transparent;
-  border-radius: 5px;
-  background: #fff;
-  color: var(--ink);
-  font-size: 14px;
-}
-
-input[type="search"]:focus {
-  border-color: #ffd6ca;
-  outline: none;
-}
-
-select {
-  max-width: 100%;
-  padding: 12px 10px;
-  border: 0;
-  border-radius: 5px;
-  background: #fff;
-  color: #333;
-  font-size: 13px;
-}
-
-.controls form button {
-  padding: 12px 20px;
-  border: 0;
-  border-radius: 5px;
-  background: #fff;
-  color: var(--orange);
-  font-weight: 800;
-}
-
-.controls form button:hover {
-  background: var(--orange-light);
-}
-
-/* AVISO DO TIKTOK */
-
-.alert {
-  max-width: 760px;
-  margin: 18px auto;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  text-align: left;
-  background: #fff;
-  border: 1px solid #f5d3cb;
-  border-left: 5px solid var(--orange);
-  border-radius: 8px;
-  box-shadow: 0 2px 9px #00000008;
-  font-size: 12px;
-}
-
-.alert-icon {
-  flex-shrink: 0;
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--orange);
-  color: #fff;
-  font-size: 20px;
-  font-style: normal;
-}
-
-.navegador-area {
-  flex: 1;
-  min-width: 0;
-}
-
-.navegador-titulo {
-  margin-bottom: 3px;
-  color: #222;
-  font-size: 14px;
-  font-weight: 900;
-}
-
-.navegador-texto {
-  color: #666;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.navegador-btn {
-  width: 100%;
-  margin-top: 11px;
-  padding: 12px 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border: 0;
-  border-radius: 5px;
-  background: var(--orange);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 900;
-  transition: background .2s, transform .2s;
-}
-
-.navegador-btn:hover,
-.entendi-btn:hover {
-  background: var(--orange-dark);
-}
-
-.navegador-btn:active,
-.entendi-btn:active {
-  transform: scale(.98);
-}
-
-.navegador-dica {
-  margin-top: 7px;
-  text-align: center;
-  color: var(--orange);
-  font-size: 10px;
-  font-weight: bold;
-}
-
-/* VITRINE */
-
-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px 16px 45px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-}
-
-/* CARDS DOS PRODUTOS */
-
-.item {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border: 1px solid #eee;
-  border-radius: 5px;
-  background: #fff;
-  color: #222;
-  box-shadow: 0 1px 4px #00000008;
-  transition: border-color .2s, box-shadow .2s, transform .2s;
-}
-
-.item:hover {
-  border-color: var(--orange);
-  box-shadow: 0 4px 15px #ee4d2d18;
-  transform: translateY(-2px);
-}
-
-.item-imagem-link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-
-.thumb {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  background: #fff;
-}
-
-.thumb img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  padding: 7px;
-  object-fit: contain;
-  transition: transform .25s;
-}
-
-.item:hover .thumb img {
-  transform: scale(1.035);
-}
-
-.off {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  z-index: 2;
-  padding: 4px 7px;
-  border-radius: 2px;
-  background: var(--orange);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 900;
-  pointer-events: none;
-}
-
-.info {
-  min-width: 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 7px;
-  padding: 11px;
-  background: #fff;
-}
-
-.name {
-  min-height: 2.8em;
-  display: -webkit-box;
-  overflow: hidden;
-  color: #333;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.45;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow-wrap: anywhere;
-}
-
-.price {
-  padding-top: 3px;
-  color: var(--orange);
-  font-family: var(--body);
-  font-size: 19px;
-  font-weight: 900;
-  line-height: 1.3;
-  overflow-wrap: anywhere;
-}
-
-.meta {
-  min-height: 16px;
-  margin-top: auto;
-  color: #888;
-  font-size: 11px;
-  line-height: 1.5;
-}
-
-/* BOTÃO VISÍVEL EM TODOS OS CARDS */
-
-.btn-produto {
-  width: 100%;
-  min-height: 40px;
-  margin-top: 8px;
-  padding: 10px 6px;
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  border: none;
-  border-radius: 5px;
-  background: var(--orange);
-  color: #fff !important;
-  font-size: 12px;
-  font-weight: 900;
-  line-height: 1.3;
-  text-align: center;
-  text-decoration: none !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  position: relative;
-  z-index: 2;
-  flex-shrink: 0;
-  transition: background .2s, transform .2s;
-}
-
-.btn-produto:hover {
-  background: var(--orange-dark);
-}
-
-.btn-produto:active {
-  transform: scale(.98);
-}
-
-.btn-produto:focus-visible {
-  outline: 3px solid #ffb49f;
-  outline-offset: 2px;
-}
-
-/* ESTADOS DA BUSCA */
-
-.state {
-  padding: 40px 12px;
-  color: #777;
-  text-align: center;
-  font-size: 14px;
-}
-
-.skeleton {
-  min-height: 250px;
-  border-radius: 5px;
-  background: #e9e9e9;
-  animation: pulse 1.2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  50% {
-    opacity: .35;
-  }
-}
-
-.more {
-  display: block;
-  margin: 25px auto 0;
-  padding: 13px 25px;
-  border: 0;
-  border-radius: 5px;
-  background: var(--orange);
-  color: #fff;
-  font-weight: 800;
-}
-
-.more:hover {
-  background: var(--orange-dark);
-}
-
-.more:disabled {
-  opacity: .65;
-  cursor: wait;
-}
-
-/* MODAL */
-
-#instrucoes {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18px;
-  background: #00000085;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity .25s ease, visibility .25s ease;
-}
-
-#instrucoes.aberto {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.janela-instrucoes {
-  position: relative;
-  width: 100%;
-  max-width: 390px;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 27px 22px 22px;
-  border: 1px solid #f0f0f0;
-  border-radius: 12px;
-  background: #fff;
-  text-align: center;
-  box-shadow: 0 15px 50px #0004;
-  transform: translateY(18px) scale(.96);
-  transition: transform .25s ease;
-}
-
-#instrucoes.aberto .janela-instrucoes {
-  transform: translateY(0) scale(1);
-}
-
-.fechar-modal {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  border: 0;
-  border-radius: 50%;
-  background: #f5f5f5;
-  color: #333;
-  font-size: 17px;
-}
-
-.fechar-modal:hover {
-  background: #eee;
-  color: var(--orange);
-}
-
-.modal-icone {
-  width: 58px;
-  height: 58px;
-  margin: 0 auto 12px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--orange-light);
-  font-size: 29px;
-}
-
-#instrucoes h3 {
-  margin: 0 25px 9px;
-  color: #222;
-  font-size: 21px;
-  line-height: 1.3;
-}
-
-.modal-intro {
-  margin-bottom: 19px;
-  color: #777;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.passo {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin: 12px 0;
-  padding: 12px;
-  border: 1px solid #eee;
-  border-radius: 7px;
-  background: #f7f7f7;
-  text-align: left;
-}
-
-.passo span {
-  flex-shrink: 0;
-  width: 29px;
-  height: 29px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--orange);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 900;
-}
-
-.passo p {
-  margin: 0;
-  padding-top: 4px;
-  color: #444;
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.entendi-btn {
-  width: 100%;
-  margin-top: 15px;
-  padding: 14px;
-  border: 0;
-  border-radius: 5px;
-  background: var(--orange);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 900;
-}
-
-.modal-dica {
-  margin-top: 11px;
-  color: #888;
-  font-size: 10px;
-}
-
-/* RODAPÉ */
-
-footer {
-  padding: 22px 16px;
-  border-top: 1px solid #e8e8e8;
-  background: #fff;
-  color: #888;
-  text-align: center;
-  font-size: 11px;
-}
-
-/* TABLETS */
-
-@media (max-width: 950px) {
-  .grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 11px;
-  }
-}
-
-/* CELULARES */
-
-@media (max-width: 650px) {
-  header {
-    padding: 24px 14px 19px;
-  }
-
-  h1 {
-    font-size: clamp(2rem, 9vw, 2.8rem);
-  }
-
-  header p {
-    font-size: 12px;
-  }
-
-  .controls form {
-    padding: 10px;
-    gap: 7px;
-  }
-
-  input[type="search"] {
-    flex-basis: 100%;
-    width: 100%;
-  }
-
-  select {
-    flex: 1;
-    min-width: 0;
-    font-size: 12px;
-  }
-
-  .controls form button {
-    padding: 11px 17px;
-  }
-
-  .alert {
-    margin: 12px 10px;
-    padding: 12px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-  }
-
-  main {
-    padding: 14px 9px 28px;
-  }
-
-  .thumb img {
-    padding: 4px;
-  }
-
-  .info {
-    padding: 9px;
-    gap: 6px;
-  }
-
-  .name {
-    font-size: 11px;
-  }
-
-  .price {
-    font-size: 16px;
-  }
-
-  .meta {
-    font-size: 10px;
-  }
-
-  .off {
-    top: 6px;
-    left: 6px;
-    padding: 4px 6px;
-    font-size: 10px;
-  }
-
-  .btn-produto {
-    min-height: 38px;
-    margin-top: 7px;
-    padding: 9px 4px;
-    gap: 3px;
-    font-size: 11px;
-  }
-
-  .janela-instrucoes {
-    padding: 25px 17px 19px;
-  }
-}
-
-/* CELULARES PEQUENOS */
-
-@media (max-width: 380px) {
-  main {
-    padding-left: 7px;
-    padding-right: 7px;
-  }
-
-  .grid {
-    gap: 7px;
-  }
-
-  .info {
-    padding: 7px;
-  }
-
-  .name {
-    font-size: 10px;
-  }
-
-  .price {
-    font-size: 14px;
-  }
-
-  .btn-produto {
-    min-height: 36px;
-    padding: 8px 3px;
-    font-size: 10px;
-  }
-
-  .controls form button {
-    padding: 10px 12px;
-  }
-}
-
-/* ACESSIBILIDADE */
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation: none !important;
-    transition: none !important;
-  }
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f7f7f7;color:#292929}
+header{background:linear-gradient(135deg,#ee4d2d,#ff7545);color:white;padding:25px 16px;text-align:center}
+header h1{margin:0;font-size:25px;font-weight:900}
+header p{margin:8px 0 0;font-size:14px}
+.controles{position:sticky;top:0;z-index:5;background:white;padding:12px;display:flex;gap:8px;box-shadow:0 3px 12px #0000000d}
+input,select{min-width:0;padding:12px;border:1px solid #ddd;border-radius:10px;background:white;font-size:14px}
+input{flex:1}
+.alerta{margin:16px auto;padding:16px;max-width:1100px;background:#fff;border:1px solid #ffe0d5;border-radius:15px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.alerta p{margin:6px 0 0;font-size:13px;color:#666}
+button,.botao{border:0;border-radius:10px;background:#ee4d2d;color:white;padding:12px 15px;font-weight:bold;cursor:pointer;text-decoration:none;transition:.2s}
+button:hover,.botao:hover{background:#d83d20;transform:translateY(-1px)}
+.grid{max-width:1200px;margin:16px auto;padding:0 12px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.card{background:white;border:1px solid #eee;border-radius:14px;overflow:hidden;box-shadow:0 3px 12px #00000008;transition:.2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 22px #00000012}
+.card img{width:100%;aspect-ratio:1/1;object-fit:contain;background:white;padding:8px}
+.info{padding:12px}
+.nome{font-size:14px;line-height:1.4;height:40px;overflow:hidden;margin:0 0 10px}
+.preco{font-size:19px;font-weight:800;color:#ee4d2d;margin:8px 0}
+.detalhe{font-size:12px;color:#777;margin:6px 0 12px}
+.card .botao{display:block;text-align:center;font-size:13px}
+#status{text-align:center;padding:16px;color:#666}
+#mais{display:block;margin:10px auto 28px}
+footer{text-align:center;background:#fff;padding:22px;color:#777;font-size:12px}
+.modal{display:none;position:fixed;inset:0;z-index:10;background:#0009;padding:20px;align-items:center;justify-content:center}
+.modal.aberto{display:flex}
+.conteudo{background:white;max-width:360px;width:100%;padding:22px;border-radius:18px;position:relative}
+.conteudo h2{margin-top:0;color:#ee4d2d}
+.conteudo li{margin:12px 0;line-height:1.4}
+.fechar{position:absolute;right:12px;top:10px;background:#eee;color:#333;padding:7px 11px}
+@media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){header h1{font-size:22px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.info{padding:9px}.nome{font-size:13px}.preco{font-size:17px}.alerta{margin:12px;align-items:flex-start;flex-direction:column}.controles{flex-wrap:wrap}.controles input{flex-basis:100%}}
 </style>
 </head>
 
 <body>
-
-<!-- AVISO PARA QUEM VEIO DO TIKTOK -->
-
-<section class="alert">
-  <i class="alert-icon" aria-hidden="true">📱</i>
-
-  <div class="navegador-area">
-    <div class="navegador-titulo">🚀 VEIO DO TIKTOK?</div>
-
-    <div class="navegador-texto">
-      Abra nossa página no navegador para ter uma experiência melhor.
-    </div>
-
-    <button
-      class="navegador-btn"
-      type="button"
-      onclick="mostrarComoAbrir()"
-      aria-haspopup="dialog"
-      aria-controls="instrucoes">
-      🌐 <span>COMO ABRIR NO NAVEGADOR</span>
-    </button>
-
-    <div class="navegador-dica">
-      ✨ Veja como fazer em poucos segundos
-    </div>
-  </div>
-</section>
-
-<!-- CABEÇALHO -->
-
 <header>
-  <h1>Shopline<span>Premium</span></h1>
-  <p>Produtos com bom preço, separados por busca. Toque em um item para ver na Shopee.</p>
+  <h1>👑 SHOPLINE PREMIUM</h1>
+  <p>Seus achadinhos favoritos em um só lugar!</p>
 </header>
 
-<!-- BUSCA E ORDENAÇÃO -->
-
-<div class="controls">
-  <form id="form">
-    <input
-      type="search"
-      id="q"
-      placeholder="Buscar produto, ex.: organizador de cozinha"
-      aria-label="Buscar produto">
-
-    <select id="sort" aria-label="Ordenar por">
-      <option value="2">Mais vendidos</option>
-      <option value="1">Mais relevantes</option>
-      <option value="4">Menor preço</option>
-      <option value="3">Maior preço</option>
-    </select>
-
-    <button type="submit">Buscar</button>
-  </form>
+<div class="controles">
+  <input id="busca" placeholder="🔎 Buscar produtos..." aria-label="Buscar produtos">
+  <select id="ordem" aria-label="Ordenar produtos">
+    <option value="">Mais relevantes</option>
+    <option value="price_asc">Menor preço</option>
+    <option value="price_desc">Maior preço</option>
+  </select>
+  <button onclick="carregar(true)">Buscar</button>
 </div>
 
-<!-- VITRINE DA API -->
+<section class="alerta">
+  <div><strong>📱 VEIO DO TIKTOK?</strong>
+    <p>Abra esta página no navegador para uma melhor experiência.</p>
+  </div>
+  <button onclick="modal(true)">🌐 COMO ABRIR</button>
+</section>
 
 <main>
-  <div class="grid" id="grid" aria-live="polite"></div>
-
-  <div class="state" id="state" role="status" hidden></div>
-
-  <button class="more" id="more" type="button" hidden>
-    Ver mais achadinhos
-  </button>
+  <div class="grid" id="grid"></div>
+  <p id="status">Carregando produtos...</p>
+  <button id="mais" onclick="carregar(false)" hidden>Ver mais produtos ↓</button>
 </main>
 
-<!-- MODAL DE INSTRUÇÕES -->
+<footer>© 2026 SHOPLINE PREMIUM · Achadinhos Shopee</footer>
 
-<div
-  id="instrucoes"
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="titulo-instrucoes"
-  aria-hidden="true"
-  onclick="clicarFora(event)">
-
-  <div class="janela-instrucoes">
-    <button
-      type="button"
-      class="fechar-modal"
-      onclick="fecharInstrucoes()"
-      aria-label="Fechar janela">
-      ✕
-    </button>
-
-    <div class="modal-icone" aria-hidden="true">🌐</div>
-
-    <h3 id="titulo-instrucoes">Como abrir no navegador</h3>
-
-    <p class="modal-intro">
-      Siga estes passos para abrir nossa página fora do TikTok:
-    </p>
-
-    <div class="passo">
-      <span>1</span>
-      <p>Toque nos <b>⋯ três pontinhos</b> do TikTok.</p>
-    </div>
-
-    <div class="passo">
-      <span>2</span>
-      <p>Procure a opção <b>“Abrir no navegador”</b>.</p>
-    </div>
-
-    <div class="passo">
-      <span>3</span>
-      <p>Escolha o <b>Chrome</b> ou outro navegador disponível.</p>
-    </div>
-
-    <button
-      type="button"
-      class="entendi-btn"
-      onclick="fecharInstrucoes()">
-      ENTENDI!
-    </button>
-
-    <div class="modal-dica">✨ É rápido e fácil!</div>
+<div class="modal" id="modal" onclick="if(event.target===this)modal(false)">
+  <div class="conteudo">
+    <button class="fechar" onclick="modal(false)" aria-label="Fechar">✕</button>
+    <h2>🚀 Abra no navegador</h2>
+    <ol>
+      <li>No TikTok, toque nos <b>três pontinhos (⋯)</b>.</li>
+      <li>Escolha <b>Abrir no navegador</b>.</li>
+      <li>Se aparecer a opção, selecione <b>Chrome</b>.</li>
+    </ol>
+    <button onclick="modal(false)">Entendi!</button>
   </div>
 </div>
 
 <script>
-/* CONTROLE DO MODAL */
+const $=id=>document.getElementById(id);
+let pagina=1,carregando=false,temMais=true;
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const urlSegura=u=>{try{let x=new URL(u);return x.protocol==="https:"?x.href:"#"}catch{return "#"}};
+function modal(abrir){$("modal").classList.toggle("aberto",abrir)}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")modal(false)});
+$("busca").addEventListener("keydown",e=>{if(e.key==="Enter")carregar(true)});
+$("ordem").addEventListener("change",()=>carregar(true));
 
-function mostrarComoAbrir() {
-  const modal = document.getElementById("instrucoes");
-  if (!modal) return;
-
-  modal.classList.add("aberto");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-
-  const botaoFechar = modal.querySelector(".fechar-modal");
-  if (botaoFechar) botaoFechar.focus();
+async function carregar(nova=true){
+ if(carregando)return;
+ if(nova){pagina=1;temMais=true;$("grid").innerHTML=""}
+ if(!temMais)return;
+ carregando=true;$("status").textContent="Carregando produtos...";
+ $("mais").hidden=true;
+ try{
+  const p=new URLSearchParams({q:$("busca").value.trim(),sort:$("ordem").value,page:pagina});
+  const r=await fetch("/api/achadinhos?"+p);
+  if(!r.ok)throw Error();
+  const json=await r.json();
+  const dados=json.data?.productOfferV2;
+  if(!dados)throw Error();
+  const produtos=dados.nodes||[];
+  produtos.forEach(x=>{
+   const nome=esc(x.productName||"Produto");
+   const imagem=urlSegura(x.imageUrl);
+   const link=urlSegura(x.offerLink||x.productLink);
+   const preco=Number(x.priceMin??x.price??0);
+   const precoMax=Number(x.priceMax??preco);
+   const precoTexto=preco>0?"R$ "+preco.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2}):"Ver preço";
+   const faixa=precoMax>preco?" a R$ "+precoMax.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2}):"";
+   const card=document.createElement("article");
+   card.className="card";
+   card.innerHTML=`<img src="${esc(imagem)}" alt="${nome}" loading="lazy"><div class="info"><p class="nome">${nome}</p><div class="preco">${precoTexto}${faixa}</div><p class="detalhe">⭐ ${esc(x.ratingStar||"—")} · ${esc(x.sales||0)} vendidos</p><a class="botao" href="${esc(link)}" target="_blank" rel="noopener noreferrer">VER PRODUTO ↗</a></div>`;
+   $("grid").appendChild(card);
+  });
+  temMais=!!dados.pageInfo?.hasNextPage;
+  pagina++;
+  $("status").textContent=$("grid").children.length?"Você está vendo os achadinhos disponíveis.": "Nenhum produto encontrado.";
+  $("mais").hidden=!temMais;
+ }catch(e){
+  $("status").textContent="Não foi possível carregar os produtos. Verifique a API e tente novamente.";
+ }finally{carregando=false}
 }
-
-function fecharInstrucoes() {
-  const modal = document.getElementById("instrucoes");
-  if (!modal) return;
-
-  modal.classList.remove("aberto");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-}
-
-function clicarFora(event) {
-  if (event.target.id === "instrucoes") {
-    fecharInstrucoes();
-  }
-}
-
-document.addEventListener("keydown", function(event) {
-  if (event.key === "Escape") {
-    fecharInstrucoes();
-  }
-});
+carregar(true);
 </script>
-
-<script>
-/* VITRINE DE PRODUTOS */
-
-const $ = (id) => document.getElementById(id);
-
-const grid = $("grid");
-const state = $("state");
-const more = $("more");
-
-let page = 1;
-let carregando = false;
-let requisicaoAtual = 0;
-
-const brl = (v) => {
-  const valor = Number(v);
-
-  if (!Number.isFinite(valor)) {
-    return "Consulte o preço";
-  }
-
-  return valor.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL"
-  });
-};
-
-const esc = (s) =>
-  String(s ?? "").replace(/[&<>"']/g, (c) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  }[c]));
-
-const compact = (n) =>
-  Number(n).toLocaleString("pt-BR", {
-    notation: "compact",
-    maximumFractionDigits: 1
-  });
-
-/* CRIA CADA CARD COM BOTÃO VISÍVEL */
-
-function card(p) {
-  const min = p.priceMin;
-  const max = p.priceMax;
-  const preco = p.price ?? min ?? max;
-
-  let price = "Consulte o preço";
-
-  if (
-    min != null &&
-    max != null &&
-    min !== "" &&
-    max !== "" &&
-    Number(min) !== Number(max)
-  ) {
-    price = `${brl(min)} – ${brl(max)}`;
-  } else if (preco != null && preco !== "") {
-    price = brl(preco);
-  }
-
-  const desconto = Number(p.priceDiscountRate);
-
-  const off = Number.isFinite(desconto) && desconto > 0
-    ? `<span class="off">-${desconto}%</span>`
-    : "";
-
-  const nota = Number(p.ratingStar);
-
-  const rating = Number.isFinite(nota) && nota > 0
-    ? `★ ${nota.toFixed(1)}`
-    : "";
-
-  const vendas = Number(p.sales);
-
-  const sales = Number.isFinite(vendas) && vendas > 0
-    ? `${compact(vendas)} vendidos`
-    : "";
-
-  const link = p.offerLink || p.productLink || "";
-  const nome = p.productName || "Produto Shopee";
-  const imagem = p.imageUrl || "";
-
-  const destino = esc(link);
-  const nomeSeguro = esc(nome);
-  const imagemSegura = esc(imagem);
-
-  const botao = link
-    ? `
-      <a
-        class="btn-produto"
-        href="${destino}"
-        target="_blank"
-        rel="noopener sponsored"
-        aria-label="Ver ${nomeSeguro} na Shopee">
-        🛍️ <span>VER NA SHOPEE</span> →
-      </a>
-    `
-    : `
-      <button
-        class="btn-produto"
-        type="button"
-        disabled
-        title="Link do produto não fornecido pela API"
-        style="opacity:.65;cursor:not-allowed">
-        Link indisponível
-      </button>
-    `;
-
-  return `
-    <article class="item">
-
-      <a
-        class="item-imagem-link"
-        href="${destino || "#"}"
-        ${link ? 'target="_blank" rel="noopener sponsored"' : ""}
-        ${link ? "" : 'aria-disabled="true" onclick="return false"'}
-        aria-label="Ver ${nomeSeguro}">
-
-        <div class="thumb">
-          ${imagem ? `
-            <img
-              src="${imagemSegura}"
-              alt="${nomeSeguro}"
-              loading="lazy"
-              decoding="async">
-          ` : `
-            <div style="height:100%;display:grid;place-items:center;color:#999;font-size:13px">
-              Imagem indisponível
-            </div>
-          `}
-          ${off}
-        </div>
-      </a>
-
-      <div class="info">
-        <div class="name">${nomeSeguro}</div>
-
-        <div class="price">${esc(price)}</div>
-
-        <div class="meta">
-          ${[rating, sales].filter(Boolean).map(esc).join(" · ")}
-        </div>
-
-        ${botao}
-      </div>
-
-    </article>
-  `;
-}
-
-/* CARREGAMENTO E BUSCA */
-
-async function load(reset) {
-  if (carregando && !reset) return;
-
-  const idRequisicao = ++requisicaoAtual;
-
-  if (reset) {
-    page = 1;
-    grid.innerHTML = '<div class="skeleton"></div>'.repeat(8);
-    state.hidden = true;
-  }
-
-  carregando = true;
-  more.disabled = true;
-  more.hidden = true;
-
-  if (!reset) {
-    more.textContent = "Carregando...";
-  } else {
-    more.textContent = "Ver mais achadinhos";
-  }
-
-  const params = new URLSearchParams({
-    q: $("q").value.trim(),
-    sort: $("sort").value,
-    page: String(page)
-  });
-
-  try {
-    const res = await fetch("/api/achadinhos?" + params.toString());
-
-    if (!res.ok) {
-      throw new Error("Erro HTTP " + res.status);
-    }
-
-    const json = await res.json();
-
-    if (idRequisicao !== requisicaoAtual) return;
-
-    if (json.errors) {
-      throw new Error(
-        json.errors[0]?.message || "Erro na API"
-      );
-    }
-
-    const resultado = json.data?.productOfferV2;
-
-    if (!resultado) {
-      throw new Error("A API não retornou a lista de produtos esperada.");
-    }
-
-    const nodes = Array.isArray(resultado.nodes)
-      ? resultado.nodes
-      : [];
-
-    const pageInfo = resultado.pageInfo || {};
-
-    if (reset) {
-      grid.innerHTML = "";
-    }
-
-    if (nodes.length) {
-      grid.insertAdjacentHTML(
-        "beforeend",
-        nodes.map(card).join("")
-      );
-    }
-
-    if (!grid.children.length) {
-      state.textContent =
-        "Nenhum produto encontrado. Tente outra palavra.";
-      state.hidden = false;
-    } else {
-      state.hidden = true;
-    }
-
-    more.hidden = !pageInfo.hasNextPage;
-
-  } catch (e) {
-    if (idRequisicao !== requisicaoAtual) return;
-
-    if (reset) {
-      grid.innerHTML = "";
-    }
-
-    state.textContent =
-      "Não foi possível carregar os produtos: " +
-      (e.message || "Erro desconhecido");
-
-    state.hidden = false;
-    more.hidden = true;
-
-    console.error("Erro ao carregar achadinhos:", e);
-
-  } finally {
-    if (idRequisicao === requisicaoAtual) {
-      carregando = false;
-      more.disabled = false;
-      more.textContent = "Ver mais achadinhos";
-    }
-  }
-}
-
-/* EVENTOS */
-
-$("form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  load(true);
-});
-
-$("sort").addEventListener("change", () => {
-  load(true);
-});
-
-more.addEventListener("click", () => {
-  if (carregando) return;
-  page++;
-  load(false);
-});
-
-/* INICIALIZA A VITRINE */
-
-load(true);
-</script>
-
-<footer>
-  Os preços e as ofertas podem mudar a qualquer momento na Shopee.
-  <br>
-  SHOPLINE PREMIUM © 2026
-</footer>
-
 </body>
 </html>
