@@ -6,7 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#ee4d2d">
 
-<title>Shopline Premium</title>
+<title>Shopline Premium | Achadinhos Shopee</title>
+<meta name="description" content="SHOPLINE PREMIUM: encontre achadinhos, ofertas e produtos da Shopee. Pesquise e descubra produtos selecionados.">
+<meta name="robots" content="index,follow">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,10 +44,12 @@ body {
   line-height: 1.5;
 }
 
-button,
-input,
-select {
+button, input, select {
   font: inherit;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 button {
@@ -212,7 +216,6 @@ select {
   color: #fff;
   font-size: 12px;
   font-weight: 900;
-  box-shadow: none;
   transition: background .2s, transform .2s;
 }
 
@@ -248,13 +251,7 @@ main {
   gap: 14px;
 }
 
-#produtos {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px 16px 45px;
-}
-
-/* CARTÕES CRIADOS PELA API */
+/* CARDS DOS PRODUTOS */
 
 .item {
   min-width: 0;
@@ -265,7 +262,6 @@ main {
   border-radius: 5px;
   background: #fff;
   color: #222;
-  text-decoration: none;
   box-shadow: 0 1px 4px #00000008;
   transition: border-color .2s, box-shadow .2s, transform .2s;
 }
@@ -274,6 +270,12 @@ main {
   border-color: var(--orange);
   box-shadow: 0 4px 15px #ee4d2d18;
   transform: translateY(-2px);
+}
+
+.item-imagem-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
 
 .thumb {
@@ -307,6 +309,7 @@ main {
   color: #fff;
   font-size: 11px;
   font-weight: 900;
+  pointer-events: none;
 }
 
 .info {
@@ -314,6 +317,7 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   gap: 7px;
   padding: 11px;
   background: #fff;
@@ -329,6 +333,7 @@ main {
   line-height: 1.45;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: anywhere;
 }
 
 .price {
@@ -338,13 +343,56 @@ main {
   font-size: 19px;
   font-weight: 900;
   line-height: 1.3;
+  overflow-wrap: anywhere;
 }
 
 .meta {
+  min-height: 16px;
   margin-top: auto;
   color: #888;
   font-size: 11px;
   line-height: 1.5;
+}
+
+/* BOTÃO VISÍVEL EM TODOS OS CARDS */
+
+.btn-produto {
+  width: 100%;
+  min-height: 40px;
+  margin-top: 8px;
+  padding: 10px 6px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  border-radius: 5px;
+  background: var(--orange);
+  color: #fff !important;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  transition: background .2s, transform .2s;
+}
+
+.btn-produto:hover {
+  background: var(--orange-dark);
+}
+
+.btn-produto:active {
+  transform: scale(.98);
+}
+
+.btn-produto:focus-visible {
+  outline: 3px solid #ffb49f;
+  outline-offset: 2px;
 }
 
 /* ESTADOS DA BUSCA */
@@ -382,6 +430,11 @@ main {
 
 .more:hover {
   background: var(--orange-dark);
+}
+
+.more:disabled {
+  opacity: .65;
+  cursor: wait;
 }
 
 /* MODAL */
@@ -590,7 +643,7 @@ footer {
     gap: 8px;
   }
 
-  #produtos {
+  main {
     padding: 14px 9px 28px;
   }
 
@@ -609,7 +662,6 @@ footer {
 
   .price {
     font-size: 16px;
-    overflow-wrap: anywhere;
   }
 
   .meta {
@@ -623,6 +675,14 @@ footer {
     font-size: 10px;
   }
 
+  .btn-produto {
+    min-height: 38px;
+    margin-top: 7px;
+    padding: 9px 4px;
+    gap: 3px;
+    font-size: 11px;
+  }
+
   .janela-instrucoes {
     padding: 25px 17px 19px;
   }
@@ -631,7 +691,7 @@ footer {
 /* CELULARES PEQUENOS */
 
 @media (max-width: 380px) {
-  #produtos {
+  main {
     padding-left: 7px;
     padding-right: 7px;
   }
@@ -650,6 +710,12 @@ footer {
 
   .price {
     font-size: 14px;
+  }
+
+  .btn-produto {
+    min-height: 36px;
+    padding: 8px 3px;
+    font-size: 10px;
   }
 
   .controls form button {
@@ -674,8 +740,9 @@ footer {
 <body>
 
 <!-- AVISO PARA QUEM VEIO DO TIKTOK -->
+
 <section class="alert">
-  <i class="alert-icon">📱</i>
+  <i class="alert-icon" aria-hidden="true">📱</i>
 
   <div class="navegador-area">
     <div class="navegador-titulo">🚀 VEIO DO TIKTOK?</div>
@@ -699,10 +766,48 @@ footer {
   </div>
 </section>
 
-<!-- VITRINE ORIGINAL -->
-<main class="grid" id="produtos"></main>
+<!-- CABEÇALHO -->
 
-<!-- JANELA DE INSTRUÇÕES -->
+<header>
+  <h1>Shopline<span>Premium</span></h1>
+  <p>Produtos com bom preço, separados por busca. Toque em um item para ver na Shopee.</p>
+</header>
+
+<!-- BUSCA E ORDENAÇÃO -->
+
+<div class="controls">
+  <form id="form">
+    <input
+      type="search"
+      id="q"
+      placeholder="Buscar produto, ex.: organizador de cozinha"
+      aria-label="Buscar produto">
+
+    <select id="sort" aria-label="Ordenar por">
+      <option value="2">Mais vendidos</option>
+      <option value="1">Mais relevantes</option>
+      <option value="4">Menor preço</option>
+      <option value="3">Maior preço</option>
+    </select>
+
+    <button type="submit">Buscar</button>
+  </form>
+</div>
+
+<!-- VITRINE DA API -->
+
+<main>
+  <div class="grid" id="grid" aria-live="polite"></div>
+
+  <div class="state" id="state" role="status" hidden></div>
+
+  <button class="more" id="more" type="button" hidden>
+    Ver mais achadinhos
+  </button>
+</main>
+
+<!-- MODAL DE INSTRUÇÕES -->
+
 <div
   id="instrucoes"
   role="dialog"
@@ -720,7 +825,7 @@ footer {
       ✕
     </button>
 
-    <div class="modal-icone">🌐</div>
+    <div class="modal-icone" aria-hidden="true">🌐</div>
 
     <h3 id="titulo-instrucoes">Como abrir no navegador</h3>
 
@@ -755,9 +860,10 @@ footer {
 </div>
 
 <script>
+/* CONTROLE DO MODAL */
+
 function mostrarComoAbrir() {
   const modal = document.getElementById("instrucoes");
-
   if (!modal) return;
 
   modal.classList.add("aberto");
@@ -770,7 +876,6 @@ function mostrarComoAbrir() {
 
 function fecharInstrucoes() {
   const modal = document.getElementById("instrucoes");
-
   if (!modal) return;
 
   modal.classList.remove("aberto");
@@ -791,41 +896,9 @@ document.addEventListener("keydown", function(event) {
 });
 </script>
 
-<header>
-  <h1>Shopline<span>Premium</span></h1>
-  <p>Produtos com bom preço, separados por busca. Toque em um item para ver na Shopee.</p>
-</header>
-
-<div class="controls">
-  <form id="form">
-    <input
-      type="search"
-      id="q"
-      placeholder="Buscar produto, ex.: organizador de cozinha"
-      aria-label="Buscar produto">
-
-    <select id="sort" aria-label="Ordenar por">
-      <option value="2">Mais vendidos</option>
-      <option value="1">Mais relevantes</option>
-      <option value="4">Menor preço</option>
-      <option value="3">Maior preço</option>
-    </select>
-
-    <button type="submit">Buscar</button>
-  </form>
-</div>
-
-<main>
-  <div class="grid" id="grid"></div>
-  <div class="state" id="state" hidden></div>
-  <button class="more" id="more" hidden>Ver mais achadinhos</button>
-</main>
-
-<footer>
-  Os preços e as ofertas podem mudar a qualquer momento na Shopee.
-</footer>
-
 <script>
+/* VITRINE DE PRODUTOS */
+
 const $ = (id) => document.getElementById(id);
 
 const grid = $("grid");
@@ -833,12 +906,21 @@ const state = $("state");
 const more = $("more");
 
 let page = 1;
+let carregando = false;
+let requisicaoAtual = 0;
 
-const brl = (v) =>
-  Number(v).toLocaleString("pt-BR", {
+const brl = (v) => {
+  const valor = Number(v);
+
+  if (!Number.isFinite(valor)) {
+    return "Consulte o preço";
+  }
+
+  return valor.toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL"
   });
+};
 
 const esc = (s) =>
   String(s ?? "").replace(/[&<>"']/g, (c) => ({
@@ -851,67 +933,152 @@ const esc = (s) =>
 
 const compact = (n) =>
   Number(n).toLocaleString("pt-BR", {
-    notation: "compact"
+    notation: "compact",
+    maximumFractionDigits: 1
   });
 
+/* CRIA CADA CARD COM BOTÃO VISÍVEL */
+
 function card(p) {
-  const price =
-    p.priceMin && p.priceMax && p.priceMin !== p.priceMax
-      ? `${brl(p.priceMin)} – ${brl(p.priceMax)}`
-      : brl(p.price || p.priceMin);
+  const min = p.priceMin;
+  const max = p.priceMax;
+  const preco = p.price ?? min ?? max;
 
-  const off = Number(p.priceDiscountRate) > 0
-    ? `<span class="off">-${Number(p.priceDiscountRate)}%</span>`
+  let price = "Consulte o preço";
+
+  if (
+    min != null &&
+    max != null &&
+    min !== "" &&
+    max !== "" &&
+    Number(min) !== Number(max)
+  ) {
+    price = `${brl(min)} – ${brl(max)}`;
+  } else if (preco != null && preco !== "") {
+    price = brl(preco);
+  }
+
+  const desconto = Number(p.priceDiscountRate);
+
+  const off = Number.isFinite(desconto) && desconto > 0
+    ? `<span class="off">-${desconto}%</span>`
     : "";
 
-  const rating = Number(p.ratingStar)
-    ? `★ ${Number(p.ratingStar).toFixed(1)}`
+  const nota = Number(p.ratingStar);
+
+  const rating = Number.isFinite(nota) && nota > 0
+    ? `★ ${nota.toFixed(1)}`
     : "";
 
-  const sales = Number(p.sales)
-    ? `${compact(p.sales)} vendidos`
+  const vendas = Number(p.sales);
+
+  const sales = Number.isFinite(vendas) && vendas > 0
+    ? `${compact(vendas)} vendidos`
     : "";
 
-  const link = p.offerLink || p.productLink;
+  const link = p.offerLink || p.productLink || "";
+  const nome = p.productName || "Produto Shopee";
+  const imagem = p.imageUrl || "";
 
-  return `<a class="item"
-      href="${esc(link)}"
-      target="_blank"
-      rel="noopener sponsored">
+  const destino = esc(link);
+  const nomeSeguro = esc(nome);
+  const imagemSegura = esc(imagem);
 
-      <div class="thumb">
-        <img
-          src="${esc(p.imageUrl)}"
-          alt=""
-          loading="lazy">
-        ${off}
-      </div>
+  const botao = link
+    ? `
+      <a
+        class="btn-produto"
+        href="${destino}"
+        target="_blank"
+        rel="noopener sponsored"
+        aria-label="Ver ${nomeSeguro} na Shopee">
+        🛍️ <span>VER NA SHOPEE</span> →
+      </a>
+    `
+    : `
+      <button
+        class="btn-produto"
+        type="button"
+        disabled
+        title="Link do produto não fornecido pela API"
+        style="opacity:.65;cursor:not-allowed">
+        Link indisponível
+      </button>
+    `;
+
+  return `
+    <article class="item">
+
+      <a
+        class="item-imagem-link"
+        href="${destino || "#"}"
+        ${link ? 'target="_blank" rel="noopener sponsored"' : ""}
+        ${link ? "" : 'aria-disabled="true" onclick="return false"'}
+        aria-label="Ver ${nomeSeguro}">
+
+        <div class="thumb">
+          ${imagem ? `
+            <img
+              src="${imagemSegura}"
+              alt="${nomeSeguro}"
+              loading="lazy"
+              decoding="async">
+          ` : `
+            <div style="height:100%;display:grid;place-items:center;color:#999;font-size:13px">
+              Imagem indisponível
+            </div>
+          `}
+          ${off}
+        </div>
+      </a>
 
       <div class="info">
-        <div class="name">${esc(p.productName)}</div>
-        <div class="price">${price}</div>
-        <div class="meta">${[rating, sales].filter(Boolean).join(" · ")}</div>
+        <div class="name">${nomeSeguro}</div>
+
+        <div class="price">${esc(price)}</div>
+
+        <div class="meta">
+          ${[rating, sales].filter(Boolean).map(esc).join(" · ")}
+        </div>
+
+        ${botao}
       </div>
-    </a>`;
+
+    </article>
+  `;
 }
 
+/* CARREGAMENTO E BUSCA */
+
 async function load(reset) {
+  if (carregando && !reset) return;
+
+  const idRequisicao = ++requisicaoAtual;
+
   if (reset) {
     page = 1;
     grid.innerHTML = '<div class="skeleton"></div>'.repeat(8);
+    state.hidden = true;
   }
 
-  state.hidden = true;
+  carregando = true;
+  more.disabled = true;
   more.hidden = true;
+
+  if (!reset) {
+    more.textContent = "Carregando...";
+  } else {
+    more.textContent = "Ver mais achadinhos";
+  }
 
   const params = new URLSearchParams({
     q: $("q").value.trim(),
     sort: $("sort").value,
-    page
+    page: String(page)
   });
 
   try {
-    const res = await fetch("/api/achadinhos?" + params);
+    const res = await fetch("/api/achadinhos?" + params.toString());
 
     if (!res.ok) {
       throw new Error("Erro HTTP " + res.status);
@@ -919,56 +1086,99 @@ async function load(reset) {
 
     const json = await res.json();
 
+    if (idRequisicao !== requisicaoAtual) return;
+
     if (json.errors) {
       throw new Error(
         json.errors[0]?.message || "Erro na API"
       );
     }
 
-    const { nodes, pageInfo } = json.data.productOfferV2;
+    const resultado = json.data?.productOfferV2;
+
+    if (!resultado) {
+      throw new Error("A API não retornou a lista de produtos esperada.");
+    }
+
+    const nodes = Array.isArray(resultado.nodes)
+      ? resultado.nodes
+      : [];
+
+    const pageInfo = resultado.pageInfo || {};
 
     if (reset) {
       grid.innerHTML = "";
     }
 
-    grid.insertAdjacentHTML(
-      "beforeend",
-      nodes.map(card).join("")
-    );
+    if (nodes.length) {
+      grid.insertAdjacentHTML(
+        "beforeend",
+        nodes.map(card).join("")
+      );
+    }
 
     if (!grid.children.length) {
       state.textContent =
         "Nenhum produto encontrado. Tente outra palavra.";
       state.hidden = false;
+    } else {
+      state.hidden = true;
     }
 
     more.hidden = !pageInfo.hasNextPage;
 
   } catch (e) {
+    if (idRequisicao !== requisicaoAtual) return;
+
     if (reset) {
       grid.innerHTML = "";
     }
 
     state.textContent =
-      "Não foi possível carregar os produtos: " + e.message;
+      "Não foi possível carregar os produtos: " +
+      (e.message || "Erro desconhecido");
+
     state.hidden = false;
+    more.hidden = true;
+
+    console.error("Erro ao carregar achadinhos:", e);
+
+  } finally {
+    if (idRequisicao === requisicaoAtual) {
+      carregando = false;
+      more.disabled = false;
+      more.textContent = "Ver mais achadinhos";
+    }
   }
 }
+
+/* EVENTOS */
 
 $("form").addEventListener("submit", (e) => {
   e.preventDefault();
   load(true);
 });
 
-$("sort").addEventListener("change", () => load(true));
+$("sort").addEventListener("change", () => {
+  load(true);
+});
 
 more.addEventListener("click", () => {
+  if (carregando) return;
   page++;
   load(false);
 });
 
+/* INICIALIZA A VITRINE */
+
 load(true);
 </script>
+
+<footer>
+  Os preços e as ofertas podem mudar a qualquer momento na Shopee.
+  <br>
+  SHOPLINE PREMIUM © 2026
+</footer>
 
 </body>
 </html>
