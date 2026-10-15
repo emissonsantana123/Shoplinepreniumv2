@@ -154,7 +154,466 @@
 </style>
 </head>
 <body>
+<!-- AVISO PARA QUEM VEIO DO TIKTOK -->
+<section class="alert">
+  <i class="alert-icon">📱</i>
 
+  <div class="navegador-area">
+    <div class="navegador-titulo">🚀 VEIO DO TIKTOK?</div>
+
+    <div class="navegador-texto">
+      Abra nossa página no navegador para ter uma experiência melhor.
+    </div>
+
+    <button
+      class="navegador-btn"
+      type="button"
+      onclick="mostrarComoAbrir()"
+      aria-haspopup="dialog"
+      aria-controls="instrucoes">
+      🌐 <span>COMO ABRIR NO NAVEGADOR</span>
+    </button>
+
+    <div class="navegador-dica">
+      ✨ Veja como fazer em poucos segundos
+    </div>
+  </div>
+</section>
+
+<!-- VITRINE DE PRODUTOS -->
+<main class="grid" id="produtos"></main>
+
+<!-- JANELA DE INSTRUÇÕES -->
+<div
+  id="instrucoes"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="titulo-instrucoes"
+  aria-hidden="true"
+  onclick="clicarFora(event)">
+
+  <div class="janela-instrucoes">
+    <button
+      type="button"
+      class="fechar-modal"
+      onclick="fecharInstrucoes()"
+      aria-label="Fechar janela">
+      ✕
+    </button>
+
+    <div class="modal-icone">🌐</div>
+
+    <h3 id="titulo-instrucoes">Como abrir no navegador</h3>
+
+    <p class="modal-intro">
+      Siga estes passos para abrir nossa página fora do TikTok:
+    </p>
+
+    <div class="passo">
+      <span>1</span>
+      <p>Toque nos <b>⋯ três pontinhos</b> do TikTok.</p>
+    </div>
+
+    <div class="passo">
+      <span>2</span>
+      <p>Procure a opção <b>“Abrir no navegador”</b>.</p>
+    </div>
+
+    <div class="passo">
+      <span>3</span>
+      <p>Escolha o <b>Chrome</b> ou outro navegador disponível.</p>
+    </div>
+
+    <button
+      type="button"
+      class="entendi-btn"
+      onclick="fecharInstrucoes()">
+      ENTENDI!
+    </button>
+
+    <div class="modal-dica">✨ É rápido e fácil!</div>
+  </div>
+</div>
+
+<style>
+/* AVISO */
+.alert{
+  max-width:720px;
+  margin:16px auto;
+  padding:15px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  text-align:left;
+  background:linear-gradient(135deg,#fffaf0,#fff5d8);
+  border:1px solid #ffd166;
+  border-left:5px solid #ff6b00;
+  border-radius:14px;
+  font-size:12px;
+  line-height:1.5;
+  box-shadow:0 4px 14px #0000000d;
+}
+
+.alert-icon{
+  font-style:normal;
+  flex-shrink:0;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:20px;
+  background:linear-gradient(135deg,#ff7a00,#ff3d00);
+  color:#fff;
+  box-shadow:0 4px 10px #ff6b0038;
+}
+
+.navegador-area{flex:1;min-width:0}
+
+.navegador-titulo{
+  font-size:13px;
+  font-weight:900;
+  color:#222;
+  margin-bottom:3px;
+}
+
+.navegador-texto{
+  font-size:11px;
+  color:#666;
+  line-height:1.45;
+}
+
+.navegador-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:100%;
+  margin-top:11px;
+  padding:12px 10px;
+  border:0;
+  border-radius:10px;
+  background:linear-gradient(135deg,#ff7a00,#ff3d00);
+  color:#fff;
+  font-size:12px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 4px 12px #ff5a0038;
+  transition:transform .2s,box-shadow .2s;
+}
+
+.navegador-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 7px 16px #ff5a0050;
+}
+
+.navegador-btn:active{transform:scale(.97)}
+
+.navegador-dica{
+  margin-top:7px;
+  text-align:center;
+  font-size:10px;
+  font-weight:bold;
+  color:#e65100;
+}
+
+/* FUNDO DO MODAL */
+#instrucoes{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:rgba(0,0,0,.75);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .25s ease,visibility .25s ease;
+}
+
+#instrucoes.aberto{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+
+/* JANELA */
+.janela-instrucoes{
+  position:relative;
+  width:100%;
+  max-width:390px;
+  max-height:90vh;
+  overflow-y:auto;
+  padding:27px 22px 22px;
+  background:#fff;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 15px 50px #0005;
+  transform:translateY(18px) scale(.96);
+  transition:transform .25s ease;
+}
+
+#instrucoes.aberto .janela-instrucoes{
+  transform:translateY(0) scale(1);
+}
+
+.fechar-modal{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:34px;
+  height:34px;
+  border:0;
+  border-radius:50%;
+  background:#f1f1f1;
+  color:#333;
+  font-size:17px;
+  cursor:pointer;
+}
+
+.modal-icone{
+  width:58px;
+  height:58px;
+  margin:0 auto 12px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#fff0e5;
+  font-size:29px;
+}
+
+#instrucoes h3{
+  margin:0 25px 9px;
+  color:#222;
+  font-size:21px;
+  line-height:1.3;
+}
+
+.modal-intro{
+  color:#777;
+  font-size:12px;
+  line-height:1.5;
+  margin-bottom:19px;
+}
+
+.passo{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:12px 0;
+  padding:12px;
+  border-radius:12px;
+  background:#f8f8f8;
+  text-align:left;
+}
+
+.passo span{
+  flex-shrink:0;
+  width:29px;
+  height:29px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#ff6b00;
+  color:#fff;
+  font-size:13px;
+  font-weight:900;
+}
+
+.passo p{
+  padding-top:4px;
+  color:#444;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.entendi-btn{
+  width:100%;
+  margin-top:15px;
+  padding:14px;
+  border:0;
+  border-radius:11px;
+  background:linear-gradient(135deg,#ff7a00,#ff3d00);
+  color:#fff;
+  font-size:13px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 4px 12px #ff5a0030;
+}
+
+.modal-dica{
+  margin-top:11px;
+  color:#888;
+  font-size:10px;
+}
+
+/* VITRINE */
+.grid{
+  max-width:1200px;
+  margin:auto;
+  padding:20px 15px 45px;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:17px;
+}
+
+.card{
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 3px 12px #0001;
+  display:flex;
+  flex-direction:column;
+  transition:transform .2s,box-shadow .2s;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 22px #0002;
+}
+
+.pic{position:relative}
+
+.pic img{
+  width:100%;
+  height:215px;
+  object-fit:contain;
+  display:block;
+}
+
+.tag{
+  position:absolute;
+  z-index:2;
+  top:10px;
+  left:10px;
+  padding:6px 9px;
+  border-radius:20px;
+  background:#ee4d2d;
+  color:#fff;
+  font-size:9px;
+  font-weight:bold;
+}
+
+.ml{
+  background:#ffe600!important;
+  color:#222!important;
+}
+
+.info{
+  padding:13px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.info h2{
+  font-size:14px;
+  line-height:1.35;
+  margin-bottom:7px;
+}
+
+.desc{
+  font-size:11px;
+  color:#777;
+  line-height:1.4;
+}
+
+.price{
+  margin-top:auto;
+  padding-top:10px;
+  color:#e64525;
+  font-size:20px;
+  font-weight:900;
+}
+
+.btn{
+  display:block;
+  margin-top:11px;
+  padding:11px 5px;
+  border-radius:8px;
+  text-align:center;
+  background:#ee4d2d;
+  color:#fff;
+  font-size:11px;
+  font-weight:bold;
+}
+
+@media(max-width:950px){
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+@media(max-width:650px){
+  .alert{margin:12px 10px;padding:12px}
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:9px;
+    padding:15px 9px 30px;
+  }
+  .pic img{height:170px}
+  .info{padding:9px}
+  .info h2{font-size:12px}
+  .desc{font-size:10px}
+  .price{font-size:17px}
+  .btn{font-size:10px;padding:10px 3px}
+  .janela-instrucoes{padding:25px 17px 19px}
+}
+
+@media(max-width:380px){
+  .grid{gap:7px;padding-left:7px;padding-right:7px}
+  .pic img{height:150px}
+  .info h2{font-size:11px}
+  .btn{font-size:9px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #instrucoes,.janela-instrucoes,.card,.navegador-btn{
+    transition:none!important;
+  }
+}
+</style>
+
+<script>
+function mostrarComoAbrir(){
+  const modal = document.getElementById("instrucoes");
+
+  if(!modal) return;
+
+  modal.classList.add("aberto");
+  modal.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+
+  const botaoFechar = modal.querySelector(".fechar-modal");
+  if(botaoFechar) botaoFechar.focus();
+}
+
+function fecharInstrucoes(){
+  const modal = document.getElementById("instrucoes");
+
+  if(!modal) return;
+
+  modal.classList.remove("aberto");
+  modal.setAttribute("aria-hidden","true");
+  document.body.style.overflow="";
+}
+
+function clicarFora(event){
+  if(event.target.id==="instrucoes"){
+    fecharInstrucoes();
+  }
+}
+
+/* Fecha com a tecla ESC */
+document.addEventListener("keydown",function(event){
+  if(event.key==="Escape"){
+    fecharInstrucoes();
+  }
+});
+</script>
+  
 <header>
   <h1>Shopline<span>Premium</span></h1>
   <p>Produtos com bom preço, separados por busca. Toque em um item para ver na Shopee.</p>
