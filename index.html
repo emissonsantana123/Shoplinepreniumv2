@@ -181,7 +181,7 @@ async function carregar(nova=true){
    const faixa=precoMax>preco?" a R$ "+precoMax.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2}):"";
    const card=document.createElement("article");
    card.className="card";
-   card.innerHTML=`<img src="${esc(imagem)}" alt="${nome}" loading="lazy"><div class="info"><p class="nome">${nome}</p><div class="preco">${precoTexto}${faixa}</div><p class="detalhe">⭐ ${esc(x.ratingStar||"—")} · ${esc(x.sales||0)} vendidos</p><a class="botao" href="${esc(link)}" target="_blank" rel="noopener noreferrer">Ver oferta ↗</a></div>`;
+   card.innerHTML=`<img src="${esc(imagem)}" alt="${nome}" loading="lazy"><div class="info"><p class="nome">${nome}</p><div class="preco">${precoTexto}${faixa}</div><p class="detalhe">⭐ ${esc(x.ratingStar||"—")} · ${esc(x.sales||0)} vendidos</p><a class="botao" href="${esc(link)}" target="_blank" rel="noopener noreferrer">VER OFERTA ↗</a></div>`;
    $("grid").appendChild(card);
   });
   temMais=!!dados.pageInfo?.hasNextPage;
